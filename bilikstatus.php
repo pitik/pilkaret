@@ -14,7 +14,7 @@
      	<div class="panel panel-default">
 			<div class="panel-body">
 			<?php
-				$status =mysql_query("select * from status_bilik"); 
+				$status =mysql_query("SELECT * from status_bilik");
 				$cek = mysql_num_rows($status);
 				if ($cek>0){
 					while ($hasil=mysql_fetch_array($status)){

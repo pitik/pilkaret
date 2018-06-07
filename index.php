@@ -1,11 +1,11 @@
 <?php
-error_reporting(0); 
+error_reporting(0);
 include('ceklogin.php');
 ?>
 <?php
 	include "koneksi.php";
 	$log=$_SESSION['username'];
-	$hasil=mysql_fetch_array(mysql_query("select * from login where username='$log'"));
+	$hasil=mysql_fetch_array(mysql_query("SELECT * from login where username='$log'"));
 	if($hasil['sebagai']!='admin'){
 		echo"<meta http-equiv=refresh content=0;url=bilik.php>";
 	}
@@ -22,18 +22,18 @@ include('ceklogin.php');
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<meta content="Sistem Informasi Pool Kendaraan Operasional PT. TASPEN Jakarta" name="description" />
 	<meta content="alfan | irfan" name="author" />
-	
+
 	<!-- STYLE -->
 	<link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.css" />
 	<link rel="stylesheet" href="assets/css/custom.css" />
     <link rel="stylesheet" href="assets/plugins/Font-Awesome/css/font-awesome.css" />
 	<link rel="stylesheet" href="assets/css/font-awesome.css" />
 	<!-- END STYLE -->
-	
+
 	<!-- ICON WEBSITE -->
 	<link rel="shortcut icon" href="assets/img/logopil.ico">
 	<!-- END ICON -->
-	
+
 	<!-- PAGE LEVEL STYLES -->
     <link href="assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
     <link rel="stylesheet" href="assets/css/bootstrap-fileupload.min.css" />
@@ -49,7 +49,7 @@ include('ceklogin.php');
     //buat object date berdasarkan waktu di client
     var clientTime = new Date();
     //hitung selisih
-    var Diff = serverTime.getTime() - clientTime.getTime();    
+    var Diff = serverTime.getTime() - clientTime.getTime();
     //fungsi displayTime yang dipanggil di bodyOnLoad dieksekusi tiap 1000ms = 1detik
     function displayServerTime(){
         //buat object date berdasarkan waktu di client
@@ -95,8 +95,8 @@ function DateToIndo($date) { // fungsi atau method untuk mengubah tanggal ke for
 	   "April", "Mei", "Juni",
 	   "Juli", "Agustus", "September",
 	   "Oktober", "November", "Desember");
-	$tgl   = substr($date, 0, 2); // memisahkan format tanggal menggunakan substring	
-	$bulan = substr($date, 3, 2); // memisahkan format bulan menggunakan substring	
+	$tgl   = substr($date, 0, 2); // memisahkan format tanggal menggunakan substring
+	$bulan = substr($date, 3, 2); // memisahkan format bulan menggunakan substring
 	$tahun = substr($date, 6, 4); // memisahkan format tahun menggunakan substring
 
 	$result = $tgl . " " . $BulanIndo[(int)$bulan-1] . " ". $tahun;
@@ -118,7 +118,7 @@ function DateToIndo($date) { // fungsi atau method untuk mengubah tanggal ke for
 		</div>
 		<div style="position:inherit; float:right">
 			<a style="color:white;" class="dateset"><?php print hari(date('w'));?>, <?php print DateToIndo(date('d-m-Y'));?> ~ <span id="clock"><?php print date('H:i:s'); ?></span> </a>
-			&nbsp;&nbsp;&nbsp;&nbsp; <label style="color:white;"> 
+			&nbsp;&nbsp;&nbsp;&nbsp; <label style="color:white;">
 				<?php
 				if($_SESSION['username']==""){
 					echo "None";
@@ -166,9 +166,9 @@ function DateToIndo($date) { // fungsi atau method untuk mengubah tanggal ke for
 			</li>
 		</ul>
 	 </div>
-</nav>  
+</nav>
         <!-- END NAV SAMPING  -->
-        
+
 	<div id="page-wrapper" >
 		<div id="page-inner">
 			<div id="content">
@@ -180,7 +180,7 @@ function DateToIndo($date) { // fungsi atau method untuk mengubah tanggal ke for
 	        $halaman=$_GET['hl'];
 	        include "$halaman.php";
 	    }
-	    ?> 
+	    ?>
 			</div>
     	</div>
     </div>
@@ -204,8 +204,8 @@ function DateToIndo($date) { // fungsi atau method untuk mengubah tanggal ke for
     <script src="assets/plugins/validationengine/js/languages/jquery.validationEngine-id.js"></script> <!-- anyar gan -->
     <script src="assets/plugins/jquery-validation-1.11.1/dist/jquery.validate.min.js"></script> <!-- anyar gan -->
     <script src="assets/js/validationInit.js"></script> <!-- anyar gan -->
-    
-    
+
+
     <script>
 	$(function () { formValidation(); });
 	function PreviewImage() {
@@ -245,30 +245,30 @@ function DateToIndo($date) { // fungsi atau method untuk mengubah tanggal ke for
 			});
 			$('#modal-konfirmasip').on('show.bs.modal', function (event) {
 				var div = $(event.relatedTarget) // Tombol dimana modal di tampilkan
-				 
+
 				// Untuk mengambil nilai dari data-id="" yang telah kita tempatkan pada link hapus
 				var id = div.data('id')
-				 
+
 				var modal = $(this)
-				 
+
 				// Mengisi atribut href pada tombol ya yang kita berikan id hapus-true pada modal .
 				modal.find('#hapus-true').attr("href","hapuspemilih.php?id="+id);
-				 
+
 			});
 			$('#modal-konfirmasirt').on('show.bs.modal', function (event) {
 				var div = $(event.relatedTarget) // Tombol dimana modal di tampilkan
-				 
+
 				// Untuk mengambil nilai dari data-id="" yang telah kita tempatkan pada link hapus
 				var id = div.data('id')
-				 
+
 				var modal = $(this)
-				 
+
 				// Mengisi atribut href pada tombol ya yang kita berikan id hapus-true pada modal .
 				modal.find('#hapus-true').attr("href","hapuscalonrt.php?id="+id);
-				 
+
 			});
 		});
     </script>
-	
+
 <!-- END PAGE LEVEL SCRIPTS -->
 </html>

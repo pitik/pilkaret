@@ -20,7 +20,7 @@ if (empty($username) && empty($password)) {
 
 $passwordmd5 = md5($password);
 
-$q = mysql_query("select * from login where username='$username' and password='$passwordmd5'");
+$q = mysql_query("SELECT * from login where username='$username' and password='$passwordmd5'");
 
 if (mysql_num_rows($q) == 1) {
 	$baris=mysql_fetch_array($q);
@@ -29,9 +29,9 @@ if (mysql_num_rows($q) == 1) {
 		header('location:index.php');
 	} else if ($baris['sebagai']=='bilik'){
 		$nama=$baris['username'];
-		$status = mysql_num_rows(mysql_query("select * from status_bilik where nama='$nama'")); 
+		$status = mysql_num_rows(mysql_query("SELECT * from status_bilik where nama='$nama'"));
 		if ($status==0){
-			$uplik = mysql_query("insert into status_bilik values ('$nama',0,0)")or die (mysql_error());
+			$uplik = mysql_query("INSERT into status_bilik values ('$nama',0,0)")or die (mysql_error());
 		}
 		header('location:bilik.php');
 	}

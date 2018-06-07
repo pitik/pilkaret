@@ -11,9 +11,9 @@
 <hr />
 
 <?php
-	$total = mysql_num_rows(mysql_query("select * from pemilih")); 
-	$hadir = mysql_num_rows(mysql_query("select * from pemilih where status_memilih='Antri' or  status_memilih='Sudah'"));
-	$mem = mysql_fetch_array(mysql_query("select * from total_suara"));
+	$total = mysql_num_rows(mysql_query("SELECT * from pemilih"));
+	$hadir = mysql_num_rows(mysql_query("SELECT * from pemilih where status_memilih='Antri' or  status_memilih='Sudah'"));
+	$mem = mysql_fetch_array(mysql_query("SELECT * from total_suara"));
 	$memilih = $mem['jumlah'];
 	$phadir = round(($hadir/$total) * 100,2);
 	$psuara = round(($memilih/$total) * 100,2);
@@ -47,7 +47,7 @@ Jumlah Total Pemilih &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <b>
 </div>
 <br>
 <?php
-	if (($psuara==100)||(((DateToIndo(date('d-m-Y'))=='13 Desember 2015'))&&(date('H:i:s')>='11:08:00'))){
+	if (($psuara==100)||(((DateToIndo(date('d-m-Y'))=='07 Juni 2018'))&&(date('H:i:s')>='13:58:00'))){
 		echo"
 		<a style='color:white' href='index.php?hl=akhir&code=aselole1234jos'>
 			<button class='btn btn-success btn-md' >Hasil Pilkaret</button>

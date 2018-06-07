@@ -15,9 +15,9 @@
 <hr />
 
 <?php
-	$total = mysql_num_rows(mysql_query("select * from pemilih")); 
-	$hadir = mysql_num_rows(mysql_query("select * from pemilih where status_memilih='Sudah' "));
-	$mem = mysql_fetch_array(mysql_query("select * from total_suara"));
+	$total = mysql_num_rows(mysql_query("SELECT * from pemilih"));
+	$hadir = mysql_num_rows(mysql_query("SELECT * from pemilih where status_memilih='Sudah' "));
+	$mem = mysql_fetch_array(mysql_query("SELECT * from total_suara"));
 	$memilih = $mem['jumlah'];
 	$phadir = round(($hadir/$total) * 100);
 	$psuara = round(($memilih/$total) * 100);
@@ -33,8 +33,12 @@ Persentase Kehadiran : <?=$phadir?> %<br>
 Persentase Suara Masuk : <?=$psuara?> %<br>
 Persentase Suara Kosong : <?=$skosong?> %<br><br>
 
-<?php 
-$calon = mysql_query("select * from calon_rt");
+<?php
+$calon = mysql_query("SELECT * from calon_rt");
+$pemenang = '';
+$nama_pemenang = '';
+$total_pemenang = 0;
+$persen_pemenang = 0;
 while ($hasil=mysql_fetch_array($calon)){
 	$dipilih = $hasil[3];
 	$persen = round(($dipilih/$hadir) * 100,2);?>
@@ -42,16 +46,16 @@ while ($hasil=mysql_fetch_array($calon)){
 		<div style="margin-bottom:8px">
 			Hasil Calon No <?=$hasil[0]?> :
 
-			<input type="button" value="Buka" style="margin: 0px; padding: 0px; width: 55px; font-size: 11px;" onclick="var spoiler = this.parentNode.parentNode.getElementsByTagName('spoilers')[0]; 
+			<input type="button" value="Buka" style="margin: 0px; padding: 0px; width: 55px; font-size: 11px;" onclick="var spoiler = this.parentNode.parentNode.getElementsByTagName('spoilers')[0];
 				if ( spoiler.style.display == 'none' ){
-					$(spoiler).fadeIn('slow'); this.value = 'Tutup'; 
+					$(spoiler).fadeIn('slow'); this.value = 'Tutup';
 				}else{
-					$(spoiler).slideUp(); 
-					$(spoiler).fadeOut('slow'); 
-					this.value = 'Buka'; 
+					$(spoiler).slideUp();
+					$(spoiler).fadeOut('slow');
+					this.value = 'Buka';
 				};" />
 			<div style="margin:2px;padding:8px;border:1px inset;background:white;border-radius: 25px;">
-			  
+
 				<spoilers style="display:none;">
 					<b>Bapak <?=$hasil[1]?> : <?=$hasil[3]?> (<?=$persen?> %)</b><hr style="margin-top:10px;margin-bottom:0px;">
 					<div class='progress progress-striped active'>
@@ -59,34 +63,50 @@ while ($hasil=mysql_fetch_array($calon)){
 						</div>
 					</div>
 				</spoilers>
-			  
+
 			</div>
 		</div>
 	</div>
-<?php	
+<?php
+
+	if (($total_pemenang == $dipilih) && $nama_pemenang !== '') {
+		$pemenang = 'seri';
+		$nama_pemenang =  ''.$nama_pemenang.', Bapak '.$hasil[1].'';
+	} else {
+		$pemenang = 'tunggal';
+		$nama_pemenang = 'Bapak '.$hasil[1].'';
+		$total_pemenang = $dipilih;
+		$persen_pemenang = $persen;
+	}
 }
-$calon = mysql_fetch_array(mysql_query("select * from calon_rt order by jumlah_suara desc"));
-	$dipilih = $calon[3];
-	$persen = round(($dipilih/$hadir) * 100,2);?>
+?>
 <hr>
 <div style="margin-top:5px">
 	<div style="margin-bottom:8px">
 		Hasilnya :
 
-		<input type="button" value="Show" style="margin: 0px; padding: 0px; width: 55px; font-size: 11px;" onclick="var spoiler = this.parentNode.parentNode.getElementsByTagName('spoilers')[0]; 
+		<input type="button" value="Show" style="margin: 0px; padding: 0px; width: 55px; font-size: 11px;" onclick="var spoiler = this.parentNode.parentNode.getElementsByTagName('spoilers')[0];
 			if ( spoiler.style.display == 'none' ){
-				$(spoiler).fadeIn('slow'); this.value = 'Hide'; 
+				$(spoiler).fadeIn('slow'); this.value = 'Hide';
 			}else{
-				$(spoiler).slideUp(); 
-				$(spoiler).fadeOut('slow'); 
-				this.value = 'Show'; 
+				$(spoiler).slideUp();
+				$(spoiler).fadeOut('slow');
+				this.value = 'Show';
 			};" />
 		<div style="margin:2px;padding:8px;border:1px inset;background:white;border-radius: 25px;">
-		  
+
 			<spoilers style="display:none;">
-				<p align="center" style="font-size:24pt;"><b>Pemenang Pilkaret adalah : Bapak <?=$calon[1]?>  <br><br>dengan total suara sebanyak <?=$calon[3]?> (<?=$persen?> %)</b></p>
+				<?php
+				if ($pemenang == 'tunggal') {
+					echo '<p align="center" style="font-size:24pt;"><b>Pemenang Pilkaret adalah : '.$nama_pemenang.' <br><br>dengan total suara sebanyak '.$total_pemenang.' ('.$persen_pemenang.' %)</b></p>';
+				} else if ($pemenang == 'seri') {
+					echo '<p align="center" style="font-size:24pt;"><b>Hasil Pemenang Pilkaret Berimbang antara : '.$nama_pemenang.' <br><br>dengan total suara sama sebanyak '.$total_pemenang.' ('.$persen_pemenang.' %)</b></p>';
+
+				}
+
+				?>
 			</spoilers>
-		  
+
 		</div>
 	</div>
 </div>

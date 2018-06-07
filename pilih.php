@@ -1,13 +1,13 @@
 <?php
 	include ("koneksi.php");
 	$nama=$_SESSION['username'];
-	$status = mysql_fetch_array(mysql_query("select * from status_bilik where nama='$nama'")); 
+	$status = mysql_fetch_array(mysql_query("SELECT * from status_bilik where nama='$nama'"));
 	if ($status['status']>0){
-		$uplik = mysql_query("update status_bilik set status=0 where nama='$nama'");
+		$uplik = mysql_query("UPDATE status_bilik set status=0 where nama='$nama'");
 	}
 
-	$hadir = mysql_num_rows(mysql_query("select * from pemilih where status_memilih='Sudah'"));
-	$mem = mysql_fetch_array(mysql_query("select * from total_suara"));
+	$hadir = mysql_num_rows(mysql_query("SELECT * from pemilih where status_memilih='Sudah'"));
+	$mem = mysql_fetch_array(mysql_query("SELECT * from total_suara"));
 	$memilih = $mem['jumlah'];
 	if (($memilih == $hadir) || ($status['kuota']==0) ){
 		echo'
@@ -20,10 +20,10 @@
 				</p>
 			</div>
 		</div>
-		
+
 			';
 	}else {
-		$uplik = mysql_query("update status_bilik set status=1 where nama='$nama'");
+		$uplik = mysql_query("UPDATE status_bilik set status=1 where nama='$nama'");
 ?>
 <div class="row" style="margin-right:-10px;">
 	<div class="col-lg-12" style="padding-left:30px;">
@@ -35,8 +35,8 @@
 
 <div  align="center" class="row" style="margin-right:-10px; text-align:center">
 	<div class="col-lg-12" style="padding-left:400px;"> <!-- kalo calon 3  = 150px -->
-		<?php 
-		$calon=mysql_query("select * from calon_rt")or die (mysql_error());
+		<?php
+		$calon=mysql_query("SELECT * from calon_rt")or die (mysql_error());
 		while ($hasil=mysql_fetch_array($calon)){
 			echo"
 			<a style='text-decoration:none;' href='bilik.php?hl=konfirmasi&id=$hasil[0]'>

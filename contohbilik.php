@@ -23,7 +23,7 @@
 		</div>
     </div>
 </header>
-	<div style="padding:1px; background-color:#036"></div>        
+	<div style="padding:1px; background-color:#036"></div>
 	<div id="page-inner">
 		<div id="content">
 			<div class="row" style="margin-right:-10px;">
@@ -36,8 +36,8 @@
 
 			<div  align="center" class="row" style="margin-right:-10px; text-align:center">
 				<div class="col-lg-12" style="padding-left:280px;">
-					<?php 
-					$calon=mysql_query("select * from calon_rt")or die (mysql_error());
+					<?php
+					$calon=mysql_query("SELECT * from calon_rt")or die (mysql_error());
 					while ($hasil=mysql_fetch_array($calon)){
 						echo"
 						<div align='center' class='col-md-3' style='border:5px ridge; margin:30px; padding-right:0px; padding-left:0px; background: url(assets/img/latar.png);' >

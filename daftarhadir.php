@@ -14,7 +14,7 @@
     <div class="col-lg-12">
      	<div class="panel panel-default">
 			<div class="panel-body">
-				<div class="table-responsive"> 
+				<div class="table-responsive">
 				<table class="table table-striped table-bordered table-hover" id="dataHadir">
 						<thead>
 						<tr>
@@ -24,13 +24,13 @@
 							<th>Alamat</th>
 							<th width=10%>No Antrian</th>
 							<th width=10%>Status</th>
-						</tr>                 
+						</tr>
 						</thead>
 						<tbody>
 						<?php
 						$i=1;
 
-						$hadir=mysql_query("select * from pemilih order by nama asc")or die (mysql_error());
+						$hadir=mysql_query("SELECT * from pemilih order by nama asc")or die (mysql_error());
 						while ($hasil=mysql_fetch_array($hadir)){
 							echo "<tr>
 								<td align=center>$i</td>
@@ -39,12 +39,12 @@
 								<td>$hasil[3]</td>
 								<td align=center>$hasil[4]</td>";
 								if ($hasil[5]=='Belum'){?>
-									<td align=center> 						
+									<td align=center>
 									<a href='index.php?hl=hadir&id=<?=$hasil[0]?>'>
 										<button class="btn btn-sm btn-info"><strong>Hadir<strong></button></a>
 									</td>
 							<?php
-								} else if ($hasil[5]=='Antri'){ 
+								} else if ($hasil[5]=='Antri'){
 									echo "<td align=center> <a style='color:red'> Antri </a> </td>";
 								}else{
 									echo "<td align=center> <a style='color:green'> Sudah </a> </td>";
@@ -55,9 +55,9 @@
 						?>
 						</tbody>
 					</table>
-				</div>         
+				</div>
 			</div>
         </div>
     </div>
 </div>
-		
+

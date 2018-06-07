@@ -2,9 +2,9 @@
 session_start();
 	include "koneksi.php";
 	$user=$_SESSION['username'];
-	$query = mysql_query("select * from login where username='$user'") or die(mysql_error());
+	$query = mysql_query("SELECT * from login where username='$user'") or die(mysql_error());
 	$data = mysql_fetch_array($query);
-	$pasl=$data['password'];	
+	$pasl=$data['password'];
 ?>
 <script language="javascript">
 	function cek(){
@@ -40,7 +40,7 @@ session_start();
 				?>
 				<hr>
             </header>
-				
+
 			<div id="div-4" class="accordion-body collapse in body">
 				<form class="form-horizontal" method="post" name="login" action="" onsubmit="return cek()">
 					<div class="form-group">
@@ -116,20 +116,20 @@ if ($_POST['update'])
 	echo $passm;
 	echo $pasl;
 	echo $pasbarum;
-	
+
 	if ($pasl==$passm){
 		if (($userbaru!="")&&($pasbaru!="")){
-			$query = mysql_query("update login set username='$userbaru', password='$pasbarum' where username='$user' and password='$passm'") or die(mysql_error());
+			$query = mysql_query("UPDATE login set username='$userbaru', password='$pasbarum' where username='$user' and password='$passm'") or die(mysql_error());
 			$_SESSION['username'] = $userbaru;
 			echo "<meta http-equiv=refresh content=0;url=?hl=aturuser&info=1>";
 			break;
 		}else if (($pasbaru=="")&&($userbaru!="")){
-			$query = mysql_query("update login set username='$userbaru' where username='$user' and password='$passm'") or die(mysql_error());
+			$query = mysql_query("UPDATE login set username='$userbaru' where username='$user' and password='$passm'") or die(mysql_error());
 			$_SESSION['username'] = $userbaru;
 			echo "<meta http-equiv=refresh content=0;url=?hl=aturuser&info=2>";
 			break;
 		}else if (($pasbaru!="")&&($userbaru=="")){
-			$query = mysql_query("update login set password='$pasbarum' where username='$user' and password='$passm'") or die(mysql_error());
+			$query = mysql_query("UPDATE login set password='$pasbarum' where username='$user' and password='$passm'") or die(mysql_error());
 			echo "<meta http-equiv=refresh content=0;url=?hl=aturuser&info=3>";
 			break;
 		}

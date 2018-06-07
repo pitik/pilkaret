@@ -2,19 +2,19 @@
 error_reporting(0);
 include("koneksi.php");
 	if ($_GET['tipe']=="print"){
-		echo'<script>  
-			window.load = cetak();  
-			function cetak(){  
-				window.print();  
-			}  
+		echo'<script>
+			window.load = cetak();
+			function cetak(){
+				window.print();
+			}
 			</script>';
 	}
-	$sql = mysql_query("select * from pemilih");
-?> 
+	$sql = mysql_query("SELECT * from pemilih");
+?>
 
-<html>  
-<head>  
-	<title>Cetak Kartu Pemilih</title>  
+<html>
+<head>
+	<title>Cetak Kartu Pemilih</title>
     <style>
 		body{
 			font-family:"Times New Roman";
@@ -53,7 +53,7 @@ include("koneksi.php");
 			border-collapse: collapse;
 			position:relative;
 			margin-right:0.25cm;
-			margin-bottom:0.30cm; 
+			margin-bottom:0.30cm;
 		}
 		div.a{
 			display: block !important;
@@ -64,21 +64,21 @@ include("koneksi.php");
 			border-collapse: collapse;
 			position:relative;
 			margin-right:0.25cm;
-			margin-bottom:0.23cm; 
-			<!-- kalo mau 
-			legal 
-			margin-bottom:0.23cm 
+			margin-bottom:0.23cm;
+			<!-- kalo mau
+			legal
+			margin-bottom:0.23cm
 			A4
 			margin-bottom:1.05cm-->
 		}
 	</style>
-</head>  
+</head>
 <body>
 
 <table style="border-collapse: collapse; page-break-after: auto;" align="center">
 <?php
 	$i=1;
-	while($hasil = mysql_fetch_array($sql)) {       
+	while($hasil = mysql_fetch_array($sql)) {
 		if ($i%2 == 1){
 		echo "
 			<tr style='border-collapse: collapse; page-break-inside: avoid; page-break-after: auto;'>
@@ -128,13 +128,13 @@ include("koneksi.php");
 			</td>
 			</tr>
 			";
-			$i=0;	
+			$i=0;
 		}
 		$i++;
 	}
 ?>
 </table>
 
-</body>  
-</html> 
+</body>
+</html>
 <meta http-equiv=refresh content=0;url=index.php?hl=pemilih>

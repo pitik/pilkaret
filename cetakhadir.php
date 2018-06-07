@@ -2,19 +2,19 @@
 error_reporting(0);
 include("koneksi.php");
 	if ($_GET['tipe']=="print"){
-		echo'<script>  
-			window.load = cetak();  
-			function cetak(){  
-				window.print();  
-			}  
+		echo'<script>
+			window.load = cetak();
+			function cetak(){
+				window.print();
+			}
 			</script>';
 	}
-	$sql = mysql_query("select * from pemilih order by nama asc");
-?> 
+	$sql = mysql_query("SELECT * from pemilih order by nama asc");
+?>
 
-<html>  
-<head>  
-	<title>Daftar Hadir Pemilih</title>  
+<html>
+<head>
+	<title>Daftar Hadir Pemilih</title>
     <style>
 		body{
 			font-family:"Times New Roman";
@@ -37,7 +37,7 @@ include("koneksi.php");
 			height: 25px;
 		}
 	</style>
-</head>  
+</head>
 <body>
 	<p style="font-size:14pt;" class="header" align=center>
 		<b> DAFTAR HADIR PEMILIH </b><br>
@@ -57,7 +57,7 @@ include("koneksi.php");
 	<tbody>
 <?php
 	$no=1;
-	while($hasil = mysql_fetch_array($sql)) {       
+	while($hasil = mysql_fetch_array($sql)) {
 		echo "<tr>
 		<td align=center>$no</td>
 		<td style='text-indent:5px'>$hasil[1]</td>
@@ -70,11 +70,11 @@ include("koneksi.php");
 		}
 		$no++;
 	}
-	
+
 	?>
 	</tbody>
 </table>
 
-</body>  
-</html> 
+</body>
+</html>
 <meta http-equiv=refresh content=0;url=index.php?hl=pemilih>
