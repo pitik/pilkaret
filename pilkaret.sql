@@ -84,6 +84,13 @@ CREATE TABLE IF NOT EXISTS `total_antri` (
   `jum_antri` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `total_antri`
+--
+
+INSERT INTO `total_antri` (`id_an`, `jum_antri`) VALUES
+(1, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -94,6 +101,13 @@ CREATE TABLE IF NOT EXISTS `total_suara` (
   `id_tot` int(11) NOT NULL,
   `jumlah` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `total_suara`
+--
+
+INSERT INTO `total_suara` (`id_tot`, `jumlah`) VALUES
+(1, 0);
 
 --
 -- Indexes for dumped tables
