@@ -47,7 +47,9 @@ $skosong = round($skosong, 2);
 	</div>
 	<br>
 	<?php
-	if (($psuara == 100) || (((DateToIndo(date('d-m-Y')) == '07 Juni 2018')) && (date('H:i:s') >= '13:58:00'))) {
+	$hari_pemilihan = '23 Februari 2024';
+	$jam_selesai_pemilihan = '11:31:00';
+	if (($psuara == 100) || (((DateToIndo(date('d-m-Y')) == $hari_pemilihan)) && (date('H:i:s') >= $jam_selesai_pemilihan))) {
 		echo "
 		<a style='color:white' href='index.php?hl=akhir&code=aselole1234jos'>
 			<button class='btn btn-success btn-md' >Hasil Pilkaret</button>
