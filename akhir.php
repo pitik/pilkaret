@@ -15,9 +15,9 @@
 <hr />
 
 <?php
-	$total = mysql_num_rows(mysql_query("SELECT * from pemilih"));
-	$hadir = mysql_num_rows(mysql_query("SELECT * from pemilih where status_memilih='Sudah' "));
-	$mem = mysql_fetch_array(mysql_query("SELECT * from total_suara"));
+	$total = mysqli_num_rows(mysqli_query($mysqli, "SELECT * from pemilih"));
+	$hadir = mysqli_num_rows(mysqli_query($mysqli, "SELECT * from pemilih where status_memilih='Sudah' "));
+	$mem = mysqli_fetch_array(mysqli_query($mysqli, "SELECT * from total_suara"));
 	$memilih = $mem['jumlah'];
 	$phadir = round(($hadir/$total) * 100);
 	$psuara = round(($memilih/$total) * 100);
@@ -34,12 +34,12 @@ Persentase Suara Masuk : <?=$psuara?> %<br>
 Persentase Suara Kosong : <?=$skosong?> %<br><br>
 
 <?php
-$calon = mysql_query("SELECT * from calon_rt");
+$calon = mysqli_query($mysqli, "SELECT * from calon_rt");
 $pemenang = '';
 $nama_pemenang = '';
 $total_pemenang = 0;
 $persen_pemenang = 0;
-while ($hasil=mysql_fetch_array($calon)){
+while ($hasil=mysqli_fetch_array($calon)){
 	$dipilih = $hasil[3];
 	$persen = round(($dipilih/$hadir) * 100,2);?>
 	<div style="margin-top:5px">
