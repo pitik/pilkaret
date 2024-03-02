@@ -374,7 +374,10 @@ line-height: 1.428571429;
 	background: #ED1C22;
 	overflow:auto;
 	height:50px;
-	float: bottom;
+    width: 100%;
+	position: fixed;
+    left: 0;
+    bottom: 0;
 }
 
 #footer hr{
