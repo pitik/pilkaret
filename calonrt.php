@@ -197,6 +197,19 @@ if ($_POST['tambahcalon']) {
 	$lokasi_file = $_FILES['foto']['tmp_name'];
 	$tipe_file   = $_FILES['foto']['type'];
 	$nama_file   = $_FILES['foto']['name'];
+
+	$file_pointer = './foto';
+	if (!file_exists($file_pointer)) {
+		mkdir($file_pointer, 0777, true);
+	}
+	$newfile = $file_pointer . '/index.php';
+	if (!file_exists($newfile)) {
+		$myfile = fopen($file_pointer . "/index.php", "w") or die("Unable to open file!");
+		$txt = "";
+		fwrite($myfile, $txt);
+		fclose($myfile);
+	}
+
 	$direktori   = "foto/$nama_file";
 	move_uploaded_file($lokasi_file, $direktori);
 	$query = mysqli_query($mysqli, "INSERT into calon_rt values('$nourut','$nama','$nama_file',0)") or die(mysqli_error($mysqli));
@@ -216,6 +229,19 @@ if ($_POST['editcalon']) {
 	$lokasi_file = $_FILES['foto']['tmp_name'];
 	$tipe_file   = $_FILES['foto']['type'];
 	$nama_file   = $_FILES['foto']['name'];
+
+	$file_pointer = './foto';
+	if (!file_exists($file_pointer)) {
+		mkdir($file_pointer, 0777, true);
+	}
+	$newfile = $file_pointer . '/index.php';
+	if (!file_exists($newfile)) {
+		$myfile = fopen($file_pointer . "/index.php", "w") or die("Unable to open file!");
+		$txt = "";
+		fwrite($myfile, $txt);
+		fclose($myfile);
+	}
+
 	$direktori   = "foto/$nama_file";
 	move_uploaded_file($lokasi_file, $direktori);
 	if (empty($nama_file)) {
