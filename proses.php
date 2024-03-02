@@ -47,8 +47,9 @@ $skosong = round($skosong, 2);
 	</div>
 	<br>
 	<?php
-	$hari_pemilihan = '23 Februari 2024';
-	$jam_selesai_pemilihan = '11:31:00';
+	// nantinya bisa di set seperlunya
+	$hari_pemilihan = DateToIndo(date('d-m-Y'));
+	$jam_selesai_pemilihan = date('H:i:s');
 	if (($psuara == 100) || (((DateToIndo(date('d-m-Y')) == $hari_pemilihan)) && (date('H:i:s') >= $jam_selesai_pemilihan))) {
 		echo "
 		<a style='color:white' href='index.php?hl=akhir&code=aselole1234jos'>
