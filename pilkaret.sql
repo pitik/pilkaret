@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `calon_rt` (
-  `no_urut` int(11) NOT NULL,
+  `no_urut` int(11) NOT NULL AUTO_INCREMENT,
   `nama` varchar(40) NOT NULL,
   `foto` varchar(255) NOT NULL,
   `jumlah_suara` int(11) NOT NULL
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `calon_rt` (
 --
 
 CREATE TABLE IF NOT EXISTS `login` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(10) NOT NULL,
   `password` varchar(32) NOT NULL,
   `sebagai` enum('admin','bilik') NOT NULL
@@ -60,7 +60,7 @@ INSERT INTO `login` (`id`, `username`, `password`, `sebagai`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `pemilih` (
-  `id_pemilih` int(11) NOT NULL,
+  `id_pemilih` int(11) NOT NULL AUTO_INCREMENT,
   `nama` varchar(80) NOT NULL,
   `jenis_kelamin` enum('Laki-laki','Perempuan') NOT NULL,
   `alamat` text NOT NULL,
@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `status_bilik` (
 --
 
 CREATE TABLE IF NOT EXISTS `total_antri` (
-  `id_an` int(11) NOT NULL,
+  `id_an` int(11) NOT NULL AUTO_INCREMENT,
   `jum_antri` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
@@ -105,7 +105,7 @@ INSERT INTO `total_antri` (`id_an`, `jum_antri`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `total_suara` (
-  `id_tot` int(11) NOT NULL,
+  `id_tot` int(11) NOT NULL AUTO_INCREMENT,
   `jumlah` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
