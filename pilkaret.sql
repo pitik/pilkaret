@@ -46,6 +46,13 @@ CREATE TABLE IF NOT EXISTS `login` (
   `sebagai` enum('admin','bilik') NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `login`
+--
+
+INSERT INTO `login` (`id`, `username`, `password`, `sebagai`) VALUES
+(1, 'Admin', '1f3c1aecf5f417fcfba7b346303485fb', 'admin');
+
 -- --------------------------------------------------------
 
 --

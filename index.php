@@ -22,7 +22,7 @@ if ($hasil['sebagai'] != 'admin') {
 	<meta charset="UTF-8" />
 	<title> Sistem E-Voting Pilkaret Teluk </title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
-	<meta content="Sistem Informasi Pool Kendaraan Operasional PT. TASPEN Jakarta" name="description" />
+	<meta content="Sistem e-Voting Pilkaret Pemilihan Ketua RT" name="description" />
 	<meta content="alfan | irfan" name="author" />
 
 	<!-- STYLE -->
